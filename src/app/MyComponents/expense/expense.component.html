@@ -1,0 +1,134 @@
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-10 col-md-8 col-lg-6">
+            <!-- Form -->
+            <form class="form-example" (ngSubmit)="submitForm()" [formGroup]="expenseForm">
+
+                <h3>Add New Expense</h3>
+                <!-- Input fields -->
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-id-card fa-fw "
+                                    style="font-size: 24px"></i></span>
+                        </div>
+                        <input type="text" class="form-control " id="UTR" placeholder="UTR (Transaction ID)..."
+                            name="utr" formControlName="utr"
+                            [ngClass]="{ 'is-invalid': isSubmitted && f['utr'].errors }">
+
+                        <div *ngIf="isSubmitted && f['utr'].errors" class="invalid-feedback">
+                            <div
+                                *ngIf="f['utr'].errors['required'] || f['utr'].errors['dirty'] || f['utr'].errors['touched']; else InvalidUTR">
+                                UTR is required</div>
+                            <ng-template #InvalidUTR>
+                                <div>Invalid UTR</div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-rupee  fa-fw"
+                                    style="font-size: 24px"></i></span>
+
+                        </div>
+                        <input type="text" class="form-control" id="amount" placeholder="Amount (in Rs)..."
+                            name="amount" formControlName="amount"
+                            [ngClass]="{ 'is-invalid': isSubmitted && f['amount'].errors }">
+
+
+                        <div *ngIf="isSubmitted && f['amount'].errors" class="invalid-feedback">
+                            <div
+                                *ngIf="f['amount'].errors['required'] || f['amount'].errors['dirty'] || f['amount'].errors['touched']; else InvalidAmount">
+                                Amount is required</div>
+                            <ng-template #InvalidAmount>
+                                <div>Invalid Amount</div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class='fa fa-calendar fa-fw'
+                                    style="font-size: 24px"></i></span>
+                        </div>
+                        <input class="form-control" [value]="date" placeholder="Date of Expense..." name="dp"
+                            [(ngModel)]="model" [maxDate]="todayDate" ngbDatepicker #d="ngbDatepicker" autocomplete="off"
+                            (click)="d.toggle()" formControlName="dp" (dateSelect)="updateSelectedDate($event)"
+                            [ngClass]="{ 'is-invalid': isSubmitted && f['dp'].errors }">
+                        <div *ngIf="isSubmitted && f['dp'].errors" class="invalid-feedback">
+                            <div
+                                *ngIf="f['dp'].errors['required'] || f['dp'].errors['dirty'] || f['dp'].errors['touched']">
+                                Date is required</div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class='fa fa-list fa-fw'
+                                    style="font-size: 24px"></i></span>
+                        </div>
+                        <select class="form-select" aria-label="Default select example" aria-placeholder="Category"
+                            formControlName="category"
+                            [ngClass]="{ 'is-invalid': isSubmitted && f['category'].errors }">
+                            <option *ngFor="let category of expense_Categories" [ngValue]="category"
+                                [selected]="category == '' " [disabled]="category == '' " [hidden]="category == '' ">
+                                {{category==''?'Expense Category':category}}
+
+                            </option>
+                        </select>
+                        <div *ngIf="isSubmitted && f['category'].errors" class="invalid-feedback">
+                            <div
+                                *ngIf="f['category'].errors['required'] || f['category'].errors['dirty'] || f['category'].errors['touched']">
+                                Category is required</div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class='fa fa-file fa-fw'
+                                    style="font-size: 24px"></i></span>
+                        </div>
+                        <input type="text" class="form-control " required id="description" placeholder="Description ..."
+                            name="description" formControlName="description"
+                            [ngClass]="{ 'is-invalid': isSubmitted && f['description'].errors }">
+
+                        <div *ngIf="isSubmitted && f['description'].errors" class="invalid-feedback">
+                            <div
+                                *ngIf="f['description'].errors['required'] || f['description'].errors['dirty'] || f['description'].errors['touched']; else InvalidDescription">
+                                Description is required</div>
+                            <ng-template #InvalidDescription>
+                                <div>Invalid Description</div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary btn-md shadow-none"  [ngClass]="{'disabled':isButtonActive==true}">
+                    <span [ngClass]="{'d-none':isButtonActive==false,'spinner-border spinner-border-sm':isButtonActive==true}" role="status" aria-hidden="true"></span>
+                    <span [ngClass]="{'d-none':isButtonActive==true}">Save</span>
+                </button>
+    
+            </form>  
+          
+           
+            <!-- Form end -->
+        </div>
+    </div>
+</div>
