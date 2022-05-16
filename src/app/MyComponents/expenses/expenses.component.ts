@@ -3,6 +3,7 @@ import { ExpensesService } from 'src/app/MyServices/expenses.service';
 import { delay, Observable } from 'rxjs';
 import { Expense } from 'src/app/MyClasses/expense';
 import * as moment from 'moment';
+
 @Component({
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
@@ -22,6 +23,10 @@ export class ExpensesComponent implements OnInit {
     this.expensesService.getExpenses().subscribe({
       next: (data: any) => {
         this.Expenses = data;
+        this.Expenses = this.Expenses.sort((a:Expense,b:Expense)=>{
+          return this.convertToDate(a.dateofexpense).getTime()- this.convertToDate(b.dateofexpense).getTime();
+        });
+      
         this.resetLoader();
       },
       error: (error) => {
@@ -39,7 +44,12 @@ export class ExpensesComponent implements OnInit {
   setDisplayBlock(displayBlock: string): void {
     this.errorMsg = displayBlock;
   }
-
   
+  
+  convertToDate(a:string):Date
+  {
+    a = a.split(' ').join('-');
+    return moment(a,"DD-MMMM-YYYY").toDate();
+  }
 
 }
