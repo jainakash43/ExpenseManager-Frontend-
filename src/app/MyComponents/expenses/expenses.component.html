@@ -1,6 +1,6 @@
 <div class="container">   <!--Parent Container of the Page-->
 
-         <div class="row p-3  ">     <!--First Row having Expense Summary and Button-->
+         <div class="row p-3 ">     <!--First Row having Expense Summary and Button-->
 
              <div class="col-sm-3 p-1  ">
                  <h3>Expense Summary</h3>
@@ -12,7 +12,15 @@
              
             
            
-           </div>
+         </div>
+         <div class=" mt-1 px-2 pb-1 ">
+          Items per Page:
+          <select (change)="handleRecordPerPage($event)" >
+            <option *ngFor="let size of pageSizes" [value]=size (selected)=size>
+               {{size}}
+            </option>
+          </select>
+         </div>
            
 
          <div class="row  ">        <!--Second Row having expense table-->
@@ -25,11 +33,11 @@
                         <th width="20%">Category</th>
                         <th width="20%">Description</th>
                         <th width="20%">Amount</th>
-                    </tr>
+                    </tr>      
                   </thead>
                 
                   <tbody >
-                    <tr *ngFor="let expense of Expenses | paginate: { itemsPerPage: 10, currentPage: 1 }">
+                    <tr *ngFor="let expense of Expenses">
                         <td>{{expense.utr}}</td>
                         <td>{{expense.dateofexpense}}</td>
                         <td>{{expense.category}}</td>
@@ -52,7 +60,7 @@
                   <h3>{{errorMsg}}</h3>
               </div>
                <div [ngStyle]="{'display':errorMsg==''?'block':'none'}" class="d-flex justify-content-end" >
-                 <p class="float right">Item per page :</p>
+                
              <!----   <pagination-controls (pageChange)="p = $event" ></pagination-controls>   --->
                </div>
              

@@ -13,6 +13,7 @@ export class ExpensesComponent implements OnInit {
   loader: boolean = true;
   errorMsg: string = "";
   p:any="";
+  pageSizes = [5,10];
   constructor(private expensesService: ExpensesService) {
 
   }
@@ -38,6 +39,11 @@ export class ExpensesComponent implements OnInit {
 
   setDisplayBlock(displayBlock: string): void {
     this.errorMsg = displayBlock;
+  }
+
+  handleRecordPerPage(event:any)
+  {
+    console.log(event);
   }
 
 }
