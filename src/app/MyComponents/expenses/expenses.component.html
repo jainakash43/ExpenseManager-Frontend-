@@ -29,7 +29,7 @@
                   </thead>
                 
                   <tbody >
-                    <tr *ngFor="let expense of Expenses">
+                    <tr *ngFor="let expense of Expenses | paginate: { itemsPerPage: 10, currentPage: 1 }">
                         <td>{{expense.utr}}</td>
                         <td>{{expense.dateofexpense}}</td>
                         <td>{{expense.category}}</td>
@@ -51,6 +51,11 @@
               <div [ngStyle]="{'display':errorMsg!=''?'block':'none'}">
                   <h3>{{errorMsg}}</h3>
               </div>
+               <div [ngStyle]="{'display':errorMsg==''?'block':'none'}" class="d-flex justify-content-end" >
+                 <p class="float right">Item per page :</p>
+             <!----   <pagination-controls (pageChange)="p = $event" ></pagination-controls>   --->
+               </div>
+             
 
          </div>
         

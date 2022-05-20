@@ -12,6 +12,7 @@ export class ExpensesComponent implements OnInit {
   Expenses: Expense[] = [];
   loader: boolean = true;
   errorMsg: string = "";
+  p:any="";
   constructor(private expensesService: ExpensesService) {
 
   }
