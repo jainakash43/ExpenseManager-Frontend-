@@ -10,7 +10,7 @@ import { FooterComponent } from './MyComponents/footer/footer.component';
 import { HomeComponent } from './MyComponents/home/home.component';
 import { ReportComponent } from './MyComponents/report/report.component';
 import { ExpensesComponent } from './MyComponents/expenses/expenses.component';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -31,7 +31,8 @@ import { ExpensesComponent } from './MyComponents/expenses/expenses.component';
     HttpClientModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

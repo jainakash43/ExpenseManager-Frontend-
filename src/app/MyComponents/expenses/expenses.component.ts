@@ -14,7 +14,9 @@ export class ExpensesComponent implements OnInit {
   Expenses: Expense[] = [];
   loader: boolean = true;
   errorMsg: string = "";
-  
+  recordPerPages:number=10;
+  currentPage:number=1;
+  pageSizes = [5,10];
   constructor(private expensesService: ExpensesService) {
 
   }
@@ -65,6 +67,12 @@ export class ExpensesComponent implements OnInit {
     n = n.split(' ').join('-');
    
     return moment(n,"DD-MMMM-YYYY");
+  }
+
+  handleRecordPerPage(event:any)
+  {
+    this.recordPerPages=event.target.value;
+    this.currentPage=1;
   }
 
 }
