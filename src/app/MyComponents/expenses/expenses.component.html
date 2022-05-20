@@ -16,8 +16,8 @@
          <div class=" mt-1 px-2 pb-1 ">
           Items per Page:
           <select (change)="handleRecordPerPage($event)" >
-            <option *ngFor="let size of pageSizes" [value]=size (selected)=size>
-               {{size}}
+            <option *ngFor="let recordPerPages of pageSizes" [value]="recordPerPages" [selected]="recordPerPages">
+               {{recordPerPages}}
             </option>
           </select>
          </div>
@@ -37,7 +37,10 @@
                   </thead>
                 
                   <tbody >
-                    <tr *ngFor="let expense of Expenses">
+                    <tr *ngFor="let expense of Expenses |paginate : {
+                      itemsPerPage: recordPerPages,
+                      currentPage: currentPage
+                    }">
                         <td>{{expense.utr}}</td>
                         <td>{{expense.dateofexpense}}</td>
                         <td>{{expense.category}}</td>
@@ -60,8 +63,8 @@
                   <h3>{{errorMsg}}</h3>
               </div>
                <div [ngStyle]="{'display':errorMsg==''?'block':'none'}" class="d-flex justify-content-end" >
-                
-             <!----   <pagination-controls (pageChange)="p = $event" ></pagination-controls>   --->
+                <pagination-controls (pageChange)="currentPage= $event"></pagination-controls>
+            
                </div>
              
 
