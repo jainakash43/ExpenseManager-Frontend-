@@ -14,12 +14,8 @@ export class ExpensesComponent implements OnInit {
   Expenses: Expense[] = [];
   loader: boolean = true;
   errorMsg: string = "";
-<<<<<<< HEAD
   p:any="";
   pageSizes = [5,10];
-=======
-  
->>>>>>> master
   constructor(private expensesService: ExpensesService) {
 
   }
