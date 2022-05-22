@@ -1,6 +1,12 @@
-.container
+.container-fluid
 {
-   margin-top: 2%;
+   
+   background-image: url("/assets/expense-background.jpg");
+   min-height: 100vh;  
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   border: 1px dotted black; 
 
 }
 .form-group
