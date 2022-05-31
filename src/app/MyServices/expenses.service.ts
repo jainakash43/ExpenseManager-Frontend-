@@ -13,9 +13,9 @@ export class ExpensesService {
   constructor(private http : HttpClient) { }
   
 
-  getExpenses():Observable<Expense[]> /* To Display all the expenses */
+  getExpenses():Observable<Expense[]> /* To Display  the current month expenses */
   {
-    return  this.http.get<any>(this.url+'all').pipe(delay(100),catchError(
+    return  this.http.get<any>(this.url+'getExpensesOfCurrentMonth').pipe(delay(100),catchError(
       (err)=>{
         let errorMsg:string = '';
         errorMsg = this.getError(err);
