@@ -28,4 +28,9 @@ export class HomeComponent implements OnInit {
     return month[this.d.getMonth()];
   }
 
+  getBudgetThisMonth():number
+  {
+    return 30000 ;
+  }
+
 }
