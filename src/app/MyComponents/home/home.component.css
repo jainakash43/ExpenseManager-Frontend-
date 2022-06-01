@@ -6,3 +6,25 @@
     background-size: cover;
     border: 1px dotted black;  
 }
+.container 
+{
+    width: 50%;
+    margin-left: auto;
+    margin-top: 20px;
+    background: whitesmoke;
+    border-radius: 10px;
+}
+@media screen and (max-width: 768px) {
+   
+    .container
+    {
+    width: 65%;
+    margin-left: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: whitesmoke;
+    }
+
+}
+    
+
