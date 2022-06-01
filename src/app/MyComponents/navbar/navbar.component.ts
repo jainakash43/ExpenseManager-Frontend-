@@ -9,7 +9,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-   currentActive:string = 'expenses';
+   currentActive:string = 'home';
    temp:string="";
 
   onClick($event:any)
@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.router.navigateByUrl("/expenses");
+    this.router.navigateByUrl("/home");
   }
 
 }
