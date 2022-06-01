@@ -28,6 +28,12 @@ export class ExpenseComponent implements OnInit {
 
   todayDate: NgbDateStruct = this.calendar.getToday();
 
+  firstDateOfMonth: NgbDateStruct = {
+                                year:new Date().getFullYear(),
+                                month:new Date().getMonth()+1,
+                                 day:1
+                              }
+
   expenseForm = this.fb.group({
 
     utr: ['', [Validators.required, Validators.maxLength(12)]],
