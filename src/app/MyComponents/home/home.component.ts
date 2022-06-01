@@ -7,9 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+   d : Date = new Date();
+
   constructor() { }
 
+  
+
   ngOnInit(): void {
+  }
+
+  getCurrentYear():number
+  {
+    return this.d.getFullYear();
+  }
+
+  getCurrentMonth():string
+  {
+    const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+    return month[this.d.getMonth()];
   }
 
 }
