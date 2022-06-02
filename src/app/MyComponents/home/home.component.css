@@ -13,16 +13,28 @@
     margin-top: 20px;
     background: whitesmoke;
     border-radius: 10px;
+    padding-bottom: 2%;
+}
+i {
+    position: absolute;
+    margin-top:8px;
+    margin-left:5px;
 }
 @media screen and (max-width: 768px) {
    
     .container
     {
-    width: 70%;
+    width: 75%;
     margin-left: auto;
     margin-top: 20px;
     border-radius: 10px;
     background: whitesmoke;
+    }
+
+    i {
+        position: absolute;
+        margin-top:8px;
+        margin-left:5px;
     }
 
 }
