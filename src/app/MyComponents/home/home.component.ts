@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbCalendar, NgbDate, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
    d : Date = new Date();
+   
+   model!:NgbDateStruct;
 
   constructor() { }
 
@@ -16,10 +19,15 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getCurrentYear():number
+  
+  getTodayDate():string
   {
-    return this.d.getFullYear();
-  }
+    const date = this.d;
+    let day = date.getDate();
+    let month = this.getCurrentMonth();
+    let year = date.getFullYear();
+    return day+" "+month+" "+year;
+  }  
 
   getCurrentMonth():string
   {

@@ -9,11 +9,11 @@
         <div class="row p-2">
 
             <div class="col-md-3">
-                <label for="">Current Year :</label>
+                <label for="">Today's Date :</label>
             </div>
 
             <div class="col-md-3">
-                <input readonly [value]=getCurrentYear()/>
+                <input readonly  [value]=getTodayDate()/>
             </div>
         </div>
 
@@ -24,7 +24,10 @@
             </div>
             
             <div class="col-md-3">
-                <input readonly [value]=getCurrentMonth()/>
+                
+                    <input readonly [value]=getCurrentMonth()/>
+                
+               
             </div>
 
         </div>
@@ -36,8 +39,11 @@
             </div>
 
             <div class="col-md-3">
-                <input readonly [value]=getBudgetThisMonth()/>
-            </div>
+                  <i class="fa fa-rupee"></i>
+                    <input readonly   [value]=getBudgetThisMonth() style="text-indent: 6%;"/>
+                </div>
+              
+            
 
         </div>
         
