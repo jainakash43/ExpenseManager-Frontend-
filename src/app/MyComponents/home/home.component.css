@@ -20,6 +20,12 @@ i {
     margin-top:8px;
     margin-left:5px;
 }
+.dot-typing
+{
+    top:-17px;
+   left:-9975px;
+
+}
 @media screen and (max-width: 768px) {
    
     .container

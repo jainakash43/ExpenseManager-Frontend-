@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, delay, Observable, throwError } from 'rxjs';
+import { catchError, delay, Observable, ObservableLike, throwError } from 'rxjs';
 import { Expense } from '../MyClasses/expense';
 
 @Injectable({
@@ -8,14 +8,26 @@ import { Expense } from '../MyClasses/expense';
 })
 export class ExpensesService {
 
-  url : string ="http://50.16.176.111:8090/"; /*http://50.16.176.111:8090 */
+  url : string ="http://localhost:8090/"; 
 
   constructor(private http : HttpClient) { }
   
 
   getExpenses():Observable<Expense[]> /* To Display all the expenses */
   {
-    return  this.http.get<any>(this.url+'all').pipe(delay(100),catchError(
+    return  this.http.get<any>(this.url+'getExpensesOfCurrentMonth').pipe(delay(100),catchError(
+      (err)=>{
+        let errorMsg:string = '';
+        errorMsg = this.getError(err);
+        return throwError(()=>errorMsg);
+      }
+      ));
+  }
+
+
+  getTotalExpensesofCurrentMonth():Observable<Expense[]>
+  {
+    return  this.http.get<any>(this.url+'getTotalExpensesofCurrentMonth').pipe(delay(100),catchError(
       (err)=>{
         let errorMsg:string = '';
         errorMsg = this.getError(err);
