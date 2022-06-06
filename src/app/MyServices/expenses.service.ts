@@ -8,7 +8,7 @@ import { Expense } from '../MyClasses/expense';
 })
 export class ExpensesService {
 
-  url : string ="http://localhost:8090/"; 
+  url : string ="http://expensemanagerbackend-env-3.eba-d8gdvmm2.us-east-1.elasticbeanstalk.com/"; 
 
   constructor(private http : HttpClient) { }
   
