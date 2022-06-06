@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { icon } from '@fortawesome/fontawesome-svg-core';
 import { NgbCalendar, NgbDate, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -47,7 +47,7 @@ export class ExpenseComponent implements OnInit {
 
 
 
-  constructor(private fb: FormBuilder, private router : Router, private calendar: NgbCalendar, private expensesService: ExpensesService, private modalService: NgbModal) { }
+  constructor(private fb: UntypedFormBuilder, private router : Router, private calendar: NgbCalendar, private expensesService: ExpensesService, private modalService: NgbModal) { }
 
 
   submitForm() {
