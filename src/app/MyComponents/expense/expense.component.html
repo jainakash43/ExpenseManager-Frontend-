@@ -60,7 +60,7 @@
                                     style="font-size: 24px"></i></span>
                         </div>
                         <input class="form-control" [value]="date" placeholder="Date of Expense..." name="dp"
-                            [(ngModel)]="model" [maxDate]="todayDate" ngbDatepicker #d="ngbDatepicker" autocomplete="off"
+                            [(ngModel)]="model" [maxDate]="todayDate" [minDate]="firstDateOfMonth" ngbDatepicker #d="ngbDatepicker" autocomplete="off"
                             (click)="d.toggle()" formControlName="dp" (dateSelect)="updateSelectedDate($event)"
                             [ngClass]="{ 'is-invalid': isSubmitted && f['dp'].errors }">
                         <div *ngIf="isSubmitted && f['dp'].errors" class="invalid-feedback">
@@ -72,7 +72,7 @@
                     </div>
                 </div>
 
-
+<!----->
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">

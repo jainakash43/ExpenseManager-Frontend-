@@ -8,12 +8,13 @@ import { Expense } from '../MyClasses/expense';
 })
 export class ExpensesService {
 
+
   url : string ="http://expensemanagerbackend-env-3.eba-d8gdvmm2.us-east-1.elasticbeanstalk.com/"; 
 
   constructor(private http : HttpClient) { }
   
 
-  getExpenses():Observable<Expense[]> /* To Display all the expenses */
+  getExpenses():Observable<Expense[]> /* To Display  the current month expenses */
   {
     return  this.http.get<any>(this.url+'getExpensesOfCurrentMonth').pipe(delay(100),catchError(
       (err)=>{
