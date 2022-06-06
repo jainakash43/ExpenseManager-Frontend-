@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbCalendar, NgbDate, NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ExpensesService } from 'src/app/MyServices/expenses.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +10,22 @@ export class HomeComponent implements OnInit {
 
    d : Date = new Date();
    
-   model!:NgbDateStruct;
+   budgetThisMonth:number=30000;
+   totalExpensesOfCurrentMonth:number=0;
+   loader:boolean=true;
 
-  constructor() { }
+  constructor(private expensesService: ExpensesService) {
+  
+    this.getTotalExpensesofCurrentMonth();
+   }
 
   
 
   ngOnInit(): void {
+    
+    
+   
+
   }
 
   
@@ -39,6 +48,24 @@ export class HomeComponent implements OnInit {
   getBudgetThisMonth():number
   {
     return 30000 ;
+  }
+
+  getTotalExpensesofCurrentMonth():void
+  {
+    this.expensesService.getTotalExpensesofCurrentMonth().subscribe({
+      next: (data: any) => {
+        this.totalExpensesOfCurrentMonth=data;
+        this.resetLoader();
+      },
+      error: (error:any) => {
+        console.log(error)
+        this.resetLoader();
+      }
+    });
+  }
+
+  resetLoader(): void {
+    this.loader = !this.loader;
   }
 
 }

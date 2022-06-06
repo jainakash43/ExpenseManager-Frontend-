@@ -31,6 +31,7 @@
               "./node_modules/font-awesome/css/font-awesome.min.css",
               "./node_modules/sweetalert2/dist/sweetalert2.css",
               "./node_modules/sweetalert2/dist/sweetalert2.min.css",
+              "./node_modules/three-dots/dist/three-dots.css",
               "src/styles.css"
             ],
             "scripts": [ 
