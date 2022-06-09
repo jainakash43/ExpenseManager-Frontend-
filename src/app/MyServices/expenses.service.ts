@@ -9,7 +9,7 @@ import { Expense } from '../MyClasses/expense';
 export class ExpensesService {
 
 
-  url : string ="http://expensemanagerbackend-env-3.eba-d8gdvmm2.us-east-1.elasticbeanstalk.com/"; 
+  url : string ="https://www.finapp-backend.in/"; 
 
   constructor(private http : HttpClient) { }
   
@@ -28,7 +28,7 @@ export class ExpensesService {
 
   getTotalExpensesofCurrentMonth():Observable<Expense[]>
   {
-    return  this.http.get<any>(this.url+'getTotalExpensesofCurrentMonth').pipe(delay(100),catchError(
+    return  this.http.get<any>(this.url+'getTotalExpensesOfCurrentMonth').pipe(delay(100),catchError(
       (err)=>{
         let errorMsg:string = '';
         errorMsg = this.getError(err);
