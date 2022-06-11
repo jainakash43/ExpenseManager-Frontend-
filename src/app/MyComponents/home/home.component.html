@@ -67,6 +67,12 @@
                 <label for="">Remaining Balance:</label>
             </div>
 
+            <div class="col-md-3">
+                <i class="fa fa-rupee" [ngStyle]="{'display':loader==true ? 'none':''}"></i>
+                <input readonly   [value]=" remainingBalanceOfCurrentMonth!=0?remainingBalanceOfCurrentMonth:''" style="text-indent: 6%;"/>
+                <div class="dot-typing"   [ngStyle]="{'display':loader==true ? 'relative':'none'}"></div>
+            </div>
+
 
         </div>
         

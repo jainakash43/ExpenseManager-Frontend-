@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, delay, Observable, ObservableLike, throwError } from 'rxjs';
+import { catchError, delay, Observable, ObservableLike, Observer, throwError } from 'rxjs';
 import { Expense } from '../MyClasses/expense';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Expense } from '../MyClasses/expense';
 export class ExpensesService {
 
 
-  url : string ="http://expensemanagerbackend-env-3.eba-d8gdvmm2.us-east-1.elasticbeanstalk.com/"; 
+  url : string ="http://localhost:8090/"; 
 
   constructor(private http : HttpClient) { }
   
@@ -28,7 +28,7 @@ export class ExpensesService {
 
   getTotalExpensesofCurrentMonth():Observable<Expense[]>
   {
-    return  this.http.get<any>(this.url+'getTotalExpensesofCurrentMonth').pipe(delay(100),catchError(
+    return  this.http.get<any>(this.url+'getTotalExpensesOfCurrentMonth').pipe(delay(100),catchError(
       (err)=>{
         let errorMsg:string = '';
         errorMsg = this.getError(err);
@@ -36,6 +36,9 @@ export class ExpensesService {
       }
       ));
   }
+
+
+ 
 
   postExpenses(data:any):Observable<any> /* To Enter New Expense */
   {

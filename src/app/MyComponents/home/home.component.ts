@@ -12,11 +12,13 @@ export class HomeComponent implements OnInit {
    
    budgetThisMonth:number=30000;
    totalExpensesOfCurrentMonth:number=0;
+   remainingBalanceOfCurrentMonth:number=0;
    loader:boolean=true;
 
   constructor(private expensesService: ExpensesService) {
   
     this.getTotalExpensesofCurrentMonth();
+    
    }
 
   
@@ -55,6 +57,7 @@ export class HomeComponent implements OnInit {
     this.expensesService.getTotalExpensesofCurrentMonth().subscribe({
       next: (data: any) => {
         this.totalExpensesOfCurrentMonth=data;
+        this.remainingBalanceOfCurrentMonth=this.budgetThisMonth-this.totalExpensesOfCurrentMonth;
         this.resetLoader();
       },
       error: (error:any) => {
@@ -63,6 +66,7 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
 
   resetLoader(): void {
     this.loader = !this.loader;
