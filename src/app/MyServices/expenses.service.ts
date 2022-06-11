@@ -9,7 +9,7 @@ import { Expense } from '../MyClasses/expense';
 export class ExpensesService {
 
 
-  url : string ="http://localhost:8090/"; 
+  url : string ="https://www.finapp-backend.in/"; 
 
   constructor(private http : HttpClient) { }
   
