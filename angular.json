@@ -113,6 +113,8 @@
       }
     }
   },
+  "defaultProject": "ExpenseManager",
+    "analytics": "aa18ab95-77bb-4046-b1d9-7a0d184d5e3f"
   "cli": {
     "analytics": false
   }
