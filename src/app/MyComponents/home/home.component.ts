@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
    d : Date = new Date();
    
    budgetThisMonth:number=30000;
-   totalExpensesOfCurrentMonth:number=0;
+   totalExpensesOfCurrentMonth:number=-1;
    remainingBalanceOfCurrentMonth:number=0;
    loader:boolean=true;
 
