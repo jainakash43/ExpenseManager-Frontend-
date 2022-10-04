@@ -1,0 +1,52 @@
+.container-fluid{
+    background-image: url("/assets/expense-background.jpg");
+    min-height: 100vh;  
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 1px dotted black;  
+}
+.container 
+{
+    width: 40%;
+    margin-left: auto;
+    margin-top: 20px;
+    background: whitesmoke;
+    border-radius: 10px;
+    padding-bottom: 2%;
+}
+i {
+    position: absolute;
+    margin-top:8px;
+    margin-left:5px;
+}
+.dot-typing
+{
+    top:-17px;
+   left:-9975px;
+
+}
+@media screen and (max-width: 768px) {
+   
+    .container
+    {
+    width: 75%;
+    margin-left: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    background: whitesmoke;
+    }
+
+    i {
+        position: absolute;
+        margin-top:8px;
+        margin-left:5px;
+    }
+    .dot-typing
+{
+    top:-17px;
+   left:-9975px;
+
+}
+
+}

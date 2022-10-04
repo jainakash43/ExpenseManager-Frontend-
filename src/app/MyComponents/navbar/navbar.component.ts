@@ -18,6 +18,7 @@ export class NavbarComponent implements OnInit {
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
     this.currentActive = value;
+    console.log(this.currentActive);
     
   }
 

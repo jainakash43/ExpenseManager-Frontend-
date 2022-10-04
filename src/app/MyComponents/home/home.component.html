@@ -39,8 +39,10 @@
             </div>
 
             <div class="col-md-3">
-                  <i class="fa fa-rupee"></i>
-                    <input readonly   [value]=budgetThisMonth style="text-indent: 6%;"/>
+                <i class="fa fa-rupee" [ngStyle]="{'display':loader==true ? 'none':''}"></i>
+                  <input readonly   [value]=" budgetThisMonth >= 0?budgetThisMonth:''" style="text-indent: 6%;"/>
+                  <div class="dot-typing"   [ngStyle]="{'display':loader==true ? 'relative':'none'}"></div>
+               
                 </div>
               
             

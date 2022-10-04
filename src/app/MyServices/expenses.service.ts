@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, delay, Observable, ObservableLike, Observer, throwError } from 'rxjs';
 import { Expense } from '../MyClasses/expense';
+import {Budget }  from '../MyClasses/budget';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Expense } from '../MyClasses/expense';
 export class ExpensesService {
 
 
-  url : string = "https://www.finapp-backend.in/" ; 
+  url :string="https://www.finapp-backend.in/" ; 
 
   constructor(private http : HttpClient) { }
   
@@ -24,9 +25,28 @@ export class ExpensesService {
       }
       ));
   }
+  getBudget():Observable<Budget>  /* Get Budget of current month */
+ {
+   let d:Date = new Date();
+   let yearmon:string ="";
+   let mon:string="";
+   let year:string=String(d.getFullYear());
+   mon=String(d.getMonth()+1)
+   mon=d.getMonth()+1<10?'0'+mon:mon;
+   yearmon=year+mon;
+
+return  this.http.get<Budget>(this.url+'getBudget/'+yearmon).pipe(delay(100),catchError(
+  (err)=>{
+    let errorMsg:string = '';
+    errorMsg = this.getError(err);
+    return throwError(()=>errorMsg);
+  }
+  ));
+
+}
 
 
-  getTotalExpensesofCurrentMonth():Observable<Expense[]>
+  getTotalExpensesofCurrentMonth():Observable<Expense[]>   /* Get Total Expense of Current month */
   {
     return  this.http.get<any>(this.url+'getTotalExpensesOfCurrentMonth').pipe(delay(100),catchError(
       (err)=>{
@@ -52,6 +72,18 @@ export class ExpensesService {
      );
   }
 
+  postBudget(data:number):Observable<any>
+  {
+    return this.http.post(this.url+'setBudget/'+data,{}).pipe(delay(100),
+    catchError((err) =>{
+      let errorMsg: string = '';
+        errorMsg = this.postError(err);
+         return throwError(()=> errorMsg);
+
+    }),
+    );
+  }
+
 
   getError(err : Error):string     /* To handle any HTTP GET Error */
   {
@@ -70,6 +102,9 @@ export class ExpensesService {
     return "Unknown Server Error";
   }
 
+
+
+
   postError(err :Error):string     /* To handle any HTTP Post Error */
   {
     if(err instanceof HttpErrorResponse)
@@ -87,6 +122,4 @@ export class ExpensesService {
   }
 
   
-}
-
-
+ }

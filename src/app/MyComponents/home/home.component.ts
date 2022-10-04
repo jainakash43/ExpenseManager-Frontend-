@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpensesService } from 'src/app/MyServices/expenses.service';
-
+import {Budget} from 'src/app/MyClasses/budget';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -10,14 +10,14 @@ export class HomeComponent implements OnInit {
 
    d : Date = new Date();
    
-   budgetThisMonth:number=45000;
+   budgetThisMonth:number=-1
    totalExpensesOfCurrentMonth:number=-1;
    remainingBalanceOfCurrentMonth:number=0;
    loader:boolean=true;
 
   constructor(private expensesService: ExpensesService) {
   
-    this.getTotalExpensesofCurrentMonth();
+   
     
    }
 
@@ -25,9 +25,26 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     
-    
+    this.getBudgetThisMonth();
    
 
+  }
+  getBudgetThisMonth():void
+  {
+    this.expensesService.getBudget().subscribe({
+      next: (data: Budget) => {
+         this.budgetThisMonth=data.amount;
+         this.resetLoader();
+         this.getTotalExpensesofCurrentMonth()
+
+      },
+      error: (error:any) => {
+        console.log(error)
+        this.resetLoader();
+      
+      }
+    });
+     
   }
 
   
@@ -47,10 +64,7 @@ export class HomeComponent implements OnInit {
     return month[this.d.getMonth()];
   }
 
-  getBudgetThisMonth():number
-  {
-    return 30000 ;
-  }
+  
 
   getTotalExpensesofCurrentMonth():void
   {
@@ -58,11 +72,11 @@ export class HomeComponent implements OnInit {
       next: (data: any) => {
         this.totalExpensesOfCurrentMonth=data;
         this.remainingBalanceOfCurrentMonth=this.budgetThisMonth-this.totalExpensesOfCurrentMonth;
-        this.resetLoader();
+        
       },
       error: (error:any) => {
         console.log(error)
-        this.resetLoader();
+        
       }
     });
   }

@@ -1,0 +1,63 @@
+<div class="container-fluid">
+    <div class="container">
+        <div class="row p-2">
+            <div class="col-md-3">
+                <label for="">Current  Year:</label>
+            </div>
+
+            <div class="col-md-3">
+                <input readonly  [value]="getDate().getFullYear()">
+            </div>
+        </div>
+
+        <div class="row p-2">
+            <div class="col-md-3">
+                <label for="">Current Month:</label>
+            </div>
+
+            <div class="col-md-3">
+                <input readonly  [value]="getCurrentMonth()">
+            </div>
+
+        </div>
+
+        <div class="row p-2">
+            <div class="col-md-3">
+                <label for="">Budget:</label>
+            </div>
+
+            <div class="col-md-3">
+                <i class="fa fa-rupee" [ngStyle]="{'display':loader==true ? 'none':''}"></i>
+                <input readonly   [value]=" getBudget()>=0?getBudget():''" style="text-indent: 6%;"/>
+                <div class="dot-typing"   [ngStyle]="{'display':loader==true ? 'relative':'none'}"></div>
+            </div>
+
+        </div>
+
+        <div class = "row p-2" [ngStyle]="toggleBudget?{'display':''}:{'display':'none'}">
+
+            <div class="col-md-3">
+                <label for="">Set Budget:</label>
+            </div>
+
+            <div class="col-md-3">
+                <i class="fa fa-rupee"></i>
+                <input type="number"   style="text-indent: 6%;"  [(ngModel)]="newBudget" >
+            </div>
+
+
+        </div>
+
+        <div class="row p-2 ">
+            <div class=" col-lg-3 m-1 ">
+                <button class="btn btn-primary"[disabled]="!toggleBudget" (click)="setBudget(newBudget)" >Set Budget</button>
+            </div>
+            <div class="col-lg-3 m-1 ">
+                <button class="btn btn-primary" (click)="enableBudget()">Edit Budget</button>
+            </div>
+             
+        </div>
+        
+
+    </div>
+</div>

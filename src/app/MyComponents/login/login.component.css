@@ -1,0 +1,49 @@
+.container-fluid
+{
+  /**/ 
+   background-image: url("/assets/expense-background.jpg");
+   min-height: 100vh;  
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   border: 1px dotted black; 
+
+}
+h1
+{
+    text-align: center;
+
+}
+.form-example
+{
+    margin:auto;
+    margin-bottom: 10%;
+    
+   
+}
+
+.form-group
+{
+    margin:auto;
+    margin-bottom: 10px;
+   
+}
+
+.input-group
+{
+    padding: 5px;
+    margin:auto;
+    width:90%;
+}
+.forget_Signup
+{
+    padding-left: 5%;
+    padding-top: 1%;
+
+}
+button
+{
+    display: block;
+    margin:auto;
+    width:90%;
+}

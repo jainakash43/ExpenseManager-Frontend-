@@ -8,9 +8,12 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './MyComponents/navbar/navbar.component';
 import { FooterComponent } from './MyComponents/footer/footer.component';
 import { HomeComponent } from './MyComponents/home/home.component';
-import { ReportComponent } from './MyComponents/report/report.component';
 import { ExpensesComponent } from './MyComponents/expenses/expenses.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { LoginComponent } from './MyComponents/login/login.component';
+import { AdminComponent } from './MyComponents/admin/admin.component';
+
+
 
 
 
@@ -21,8 +24,12 @@ import {NgxPaginationModule} from 'ngx-pagination';
     FooterComponent,
     routingComponents,
     HomeComponent,
-    ReportComponent,
-    ExpensesComponent
+
+    ExpensesComponent,
+    LoginComponent,
+    AdminComponent,
+  
+    
 
   ],
   imports: [
